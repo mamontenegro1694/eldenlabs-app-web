@@ -1,0 +1,15 @@
+<main fxFill fxLayout="column">
+
+    <mat-toolbar fxFlex="none" *ngIf="(currentUser$ | async)" color="primary">
+        <span class="toolbar-title">EldenLabs App</span>
+        <!-- <button mat-button>Inicio</button> -->
+        <span class="toolbar-spacer"></span>
+        <button mat-raised-button color="accent" (click)="logout()">
+            Salir
+        </button>
+    </mat-toolbar>
+
+    <div class="app-container" fxFlex>
+        <ng-content></ng-content>
+    </div>
+</main>

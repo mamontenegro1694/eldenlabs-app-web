@@ -1,0 +1,30 @@
+<main fxLayout="row" fxLayoutAlign="center" fxFill>
+    <div class="login-form" fxFlex.gt-xs="30" fxFlex.xs="90" fxLayout="column" fxLayoutAlign="end">
+        <div class="logo" fxFlex></div>
+        <form [formGroup]="loginForm" (ngSubmit)="formSubmit()" fxFlex="60" fxLayout="column" fxLayoutGap="1rem">
+            <h1 style="text-align: center;">EldenLabs</h1>
+            <mat-form-field appearance="outline">
+                <mat-label>Correo</mat-label>
+                <input type="text" matInput formControlName="email" />
+                <mat-error *ngIf="email?.hasError('required')">
+                    Campo requerido
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Contraseña</mat-label>
+                <input type="text" matInput formControlName="password" />
+
+                <mat-error *ngIf="password?.hasError('required')">
+                    Campo requerido
+                </mat-error>
+            </mat-form-field>
+
+            <!-- Separador -->
+            <div fxFlex></div>
+
+            <button mat-raised-button color="primary">Iniciar sesión</button>
+            <div fxFlex="10"></div>
+        </form>
+    </div>
+</main>
