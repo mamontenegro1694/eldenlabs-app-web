@@ -5,6 +5,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { LayoutComponent } from './components/layout/layout.component';
 import { MaterialModule } from '../material/material.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { MaterialModule } from '../material/material.module';
     CommonModule,
     FlexLayoutModule,
     MaterialModule,
+    RouterModule,
   ],
   exports: [
     FlexLayoutModule,

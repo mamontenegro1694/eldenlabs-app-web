@@ -15,16 +15,11 @@ export class LoggedGuard implements CanActivate {
 
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    state: RouterStateSnapshot
+  ): Observable<boolean | UrlTree> {
 
     return this.authService.isAuth$.pipe(
-      map(isAuth => {
-        if (isAuth) {
-          return this.router.createUrlTree(['.']);
-        }
-
-        return !isAuth;
-      })
+      map(isAuth => !isAuth || this.router.createUrlTree(['.']))
     );
   }
 

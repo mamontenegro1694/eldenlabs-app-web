@@ -2,7 +2,8 @@
 
     <mat-toolbar fxFlex="none" *ngIf="(currentUser$ | async)" color="primary">
         <span class="toolbar-title">EldenLabs App</span>
-        <!-- <button mat-button>Inicio</button> -->
+        <button mat-button routerLink="home">Inicio</button>
+        <button mat-button routerLink="measurements">Mediciones</button>
         <span class="toolbar-spacer"></span>
         <button mat-raised-button color="accent" (click)="logout()">
             Salir

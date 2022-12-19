@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Observable } from 'rxjs';
 import { Measurement } from 'src/app/models/measurement.interface';
 import { MeasurementService } from 'src/app/services/measurement.service';
 import { SharedModule } from 'src/app/shared/shared.module';
@@ -55,8 +54,6 @@ export class MeasurementsComponent implements OnInit {
       this.rangeParams?.endDate
     ).subscribe({
       next: (measurements) => {
-        console.log(measurements);
-
         this.measurementsDatasource = measurements;
       }
     });

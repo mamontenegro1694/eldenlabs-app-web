@@ -20,7 +20,7 @@ export class UserService {
     this.apiUrl = environment.apiUrl;
   }
 
-  getCurrent(): Observable<null | User> {
+  getCurrentUser(): Observable<User | null> {
     const token = localStorage.getItem("token");
 
     if (!token) {

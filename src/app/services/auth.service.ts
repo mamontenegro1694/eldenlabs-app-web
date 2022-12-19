@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable, switchMap, tap } from 'rxjs';
+import { map, Observable, of, switchMap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { User } from '../models/user.interface';
 import { UserService } from './user.service';
@@ -12,7 +12,9 @@ export class AuthService {
   private apiUrl: string;
 
   public isAuth$: Observable<boolean> = this.userService.currentUser$.pipe(
-    tap(currentUser => console.log('currentUser from isAuth$', currentUser)),
+    switchMap(currentUser => {
+      return (currentUser != null) ? of(currentUser) : this.userService.getCurrentUser();
+    }),
     map(Boolean)
   );
 
@@ -35,7 +37,7 @@ export class AuthService {
       switchMap((token) => {
         this.setToken(token);
 
-        return this.userService.getCurrent();
+        return this.userService.getCurrentUser();
       })
     );
   }
